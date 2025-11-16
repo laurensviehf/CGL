@@ -1,7 +1,12 @@
-# Quantenmechanik und Spin
+# Aufgabe 1
+Die datei kann mithilfe des Befehls ```pandoc sheet04.md -o sheet04.pdf``` 
+zu einer pdf umgewandelt werden.
 
-1. In der Quantenstatistik unterscheidet man verschiedene Teilchensorten, die unterschiedlichen Gleichgewichtsverteilungen folgen. Der Zusammenhang zwischen Spin und Statistik wird in der relativistischen Quantenfeldtheorie durch das sogenannte Spin-Statistik-Theorem
-hergestellt.[^1]
+
+# Quantenmechanik und Spin
+1. In der Quantenstatistik unterscheidet man verschiedene Teilchensorten, die unterschiedlichen Gleichgewichtsverteilungen folgen. Der Zusammenhang zwischen Spin und Statistik wird in d   er relativistischen Quantenfeldtheorie durch das sogenannte Spin-Statistik-Theorem
+hergestellt. [^1]
+
 
 | Teilchensorte | Statistik | Spin |
 |:------:|:------:|:------:|
@@ -39,6 +44,31 @@ $\gamma^1 = \begin{bmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & -1 & 0 & 0 \\ 
 
 $\gamma^2 = \begin{bmatrix} 0 & 0 & 0 & -i \\ 0 & 0 & i & 0 \\ 0 & i & 0 & 0 \\ -i & 0 & 0 & 0 \end{bmatrix}$,
 $\gamma^3 = \begin{bmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & -1 \\ -1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{bmatrix}$, 
+
+\newpage
+
+# Aufgabe 2
+Mithilfe diesem Skript werden die Blkätter in eine Pdf gemacht.
+
+```
+#!/bin/bash
+# Dieses Skript erstellt pdf Dateien aus Markdown Dateien
+
+i=0
+while [ $i -lt 5 ]; do
+    INDEX=$(printf "%02d" $i)
+    if [ -f sheet"$INDEX".md ]; then
+        echo "Konvertiere sheet$INDEX.md zu PDF..."
+        pandoc sheet"$INDEX".md -o sheet"$INDEX".pdf
+    else
+        echo "Datei sheet$INDEX.md nicht gefunden. Beende Konvertierung."
+        break
+    fi
+    i=$((i + 1))
+done
+
+echo "Skript beendet."
+```
 
 ---
 [^1]: [https://de.wikipedia.org/wiki/Spin-Statistik-Theorem](https://de.wikipedia.org/wiki/Spin-Statistik-Theorem)
