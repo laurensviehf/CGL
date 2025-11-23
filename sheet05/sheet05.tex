@@ -1,0 +1,143 @@
+\documentclass[a4paper,12pt,bibliography=totocnumbered]{scrartcl}
+\usepackage[utf8]{inputenc} %Codierung des LaTeX-Dokumentes. Auf Windows-Maschinen ist statt utf8 auch ANSIC als Codierung möglich, aber unnötig, da utf8 in jeder Hinsicht besser als ANSI ist. Bei Linux: latin1 als Codierung, auf MacOS X: applemac
+\usepackage[T1]{fontenc}
+\usepackage{gensymb}
+\usepackage[english]{babel} %Deutsche Zeichen- und Umbruchsetzung
+\usepackage{amsmath, amssymb,amsfonts} %AMS-TeX-Pakete. Nötig für die Definition der Mathematik-Umgebung
+\usepackage{lmodern}
+\usepackage{graphicx} %Nötig, um Grafiken einbinden zu können
+\usepackage{geometry}
+\usepackage{biblatex}
+\addbibresource{lit.bib} %Literaturverzeichnis, zu finden als Datei lit.bib im selben Ordner wie diese .tex-Datei
+\usepackage{float}
+%Ein Paket, mit dem sich ohne Probleme mehrseitige PDF-Dokumente ohne \includegraphics-Rumgemache einbinden lassen. Befehl: \includepdf[pages=a-b]{PDFfile.pdf}. Einzelne Seiten, oder auch alle Seiten (Option pages=-) können angewählt werden
+%Wenn keine Option angegeben wird, gilt pages=1!
+\usepackage[final]{pdfpages}
+\usepackage{framed, color} %Framed: Paket, mittels dessen ein Rahmen um einen Bereich definiert werden kann. Color: Lässt Farbdarstellung in Schrift, Hintergrund etc. zu
+\usepackage{scrlayer-scrpage} %Header für die KOMA-script -Klasse
+\usepackage{siunitx} %Ein schönes Paket, um Einheiten und physikalische Größen richtig zu setzen. Z.B.  \SI{2}{\kilo\gram\per\meter\squared}
+%\sisetup{locale = US} %macht das die Punkte in Rechnungen Punkte bleiben
+\usepackage{subfigure} %Mehrere Bilder in einer Figure-Umgebung
+\usepackage{mhchem}
+\usepackage[bookmarks,colorlinks=true]{hyperref} %Mittels hyperref lassen sich hyperlinks innerhalb des PDF-Dokumentes benutzen. Beispiel: Mausklick im Inhaltsverzeichnis auf ein Kapitel führt zum automatischen Sprung in dieses Kapitel
+\graphicspath{{images/}}
+%siunitx-Konfiguration. Damit werden die richtigen Font-Einstellungen erkannt (also beispielsweise fett, kursiv etc.) und damit  ebenfalls die deutsche Zeichensetzung, insbesondere Trennungszeichen, benutzt werden. 
+%Ebenso wird bei SIrange das "`to"' in "`bis"' umgewandelt, bei SIlist das "`and"' in "`und"'
+\sisetup{detect-weight=true, detect-family=true, locale=US, range-phrase={\,bis\,}, 
+list-final-separator={\,\linebreak[0] \text{und}\,}, separate-uncertainty=true, 
+per-mode=symbol-or-fraction}
+%\SI[per-mode = fraction]{1}{\meter\per\second} erzwingt auch im Fließtext die Bruchdarstellung.
+\DeclareSIUnit\curie{Ci}%Zusätzliche Einheit definieren
+
+%Hyperlinks-Setup
+\hypersetup{
+	colorlinks,
+	linktocpage,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\numberwithin{equation}{section} % Die Nummerierung von Gleichungen bekommt die jeweilige Section-Nummer als Präfix
+
+\setlength{\parindent}{0 mm} %Einrücktiefe von neuen Absätzen
+\setlength{\parskip}{2 mm} %Abstand von Absätzen
+
+
+
+\pagestyle{scrheadings}%Kopf und Fußzeilen
+\ihead{\VerfasserEINS\;\&\;\VerfasserZWEI}
+\ofoot{\thepage}
+\cfoot{\empty}
+\ifoot{\empty} 
+
+\newcommand{\VERSUCHSDATUM}{10/27/2025}
+\newcommand{\PROTOKOLLDATUM}{\today}
+
+\newcommand{\VerfasserEINS}{Felix Roth}
+\newcommand{\MatNoEINS}{3711192}
+\newcommand{\StudiengangEINS}{B. Sc. Chemistry}
+\newcommand{\stmailEINS}{st188157@stud.uni-stuttgart.de}
+
+\newcommand{\VerfasserZWEI}{Jarno Adam}
+\newcommand{\MatNoZWEI}{3725706}
+\newcommand{\StudiengangZWEI}{B. Sc. Chemistry}
+\newcommand{\stmailZWEI}{st188875@stud.uni-stuttgart.de}
+
+\newcommand{\Assistent}{Anna Savchenko}
+
+\newcommand{\VERSUCHSNAME}{Infrared Spectroscopy and Raman Spectroscopy}
+
+
+\begin{document}
+\thispagestyle{empty}
+\begin{titlepage}
+    \title{Abgabe Blatt 5}
+    \author{Laurens Viehoff}
+    \author{Felix Roth}
+    \date{\today}
+\maketitle
+\end{titlepage}
+
+
+\thispagestyle{empty}
+\tableofcontents 
+\clearpage 
+
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{1}
+
+\section{Evaluation}
+
+\subsection{Raman}
+For the following Raman spectra, the selection rule applies, that the polarizability of the molecule needs to change with 
+the absorption. This means only those vibrational modes are Raman active and will thus be visible in the spectrum, which are 
+linked to a change in the dipole of the molecule. \cite{Script}
+\subsubsection{Comparison of experimental and calculated spectra}
+The calculated and meassured peak positions for the chloroform are listed in table \eqref{Theo_exp_Raman_Chloroform}
+\begin{table}[H] 
+    \centering
+    \caption{Theoretically calculated peak positions $\tilde{\nu}_\text{theo}$ with their activity $A$ and depolarisation $\rho$ and experimentally meassured peak positions $\tilde{\nu}_\text{exp}$ with their intensitiy $I$ for chloroform.}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        Mode & $\tilde{\nu}_\text{theo}$ & $A$ & $\rho$ & $\tilde{\nu}_\text{exp}$ & $I$ \\
+        \hline        
+	6 &      254.65 & 5.14 & 0.75 & -  &- \\
+   7  &     254.97  & 5.13 & 0.75 & 402.08 & 2913.67\\
+   8  &    361.89   & 8.68 & 0.24 & 492.15 & 3156.67 \\
+   9  &   665.44    & 9.80 & 0.00 & - & -\\
+  10  &  740.53     & 3.09 & 0.75 & 759.03 & 3644.33 \\
+  11  & 740.76      & 3.08 & 0.75 & 839.09  &    1774 \\
+  12  &    1219.78  & 6.03 & 0.75 &  - & -\\
+  13  &   1220.55   & 6.02 & 0.75 & 1266.11 & 1429 \\
+  14  &  3168.76    & 77.21 & 0.24 & 3187.65 &  3136\\
+         \hline
+    \end{tabular}
+    \label{Theo_exp_Raman_Chloroform}
+\end{table}
+It is clearly visible that the experimental data follow the Raman selection rules, as vibrational mode 9 is not observable. 
+Additionally, deviations in the wavenumbers are seen between the simulated and experimental data. Furthermore, there are 
+several simulated peaks that possess similar wavenumbers and are superimposed in the experimental data due to line 
+broadening.
+\\
+The recorded spectrum for chloroform is depicted in figure \eqref{fig:Raman_Chloroform}.
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=0.9\linewidth]{ramanChloroform.png}
+    \caption{Raman spectrum of Chloroform.}
+    \label{fig:Raman_Chloroform}
+\end{figure}
+In this plot, 8 peaks are visible, 4 of which at a wavenumber lower than \SI{1000}{cm^{-1}}, one at around \SI{1200}{cm^{-1}} 
+and one at around \SI{3000}{cm^{-1}}. The one at \SI{2500}{cm^{-1}} must be caused by impurifications. The peak at 
+\SI{2000}{cm^{-1}} is the Rayleigh peak which is present in all the following spectra.
+\begin{equation}\label{dummeRechnung}
+	\frac{\sqrt{\tilde{\mu_\text{H}}}}{\sqrt{\tilde{\mu_\text{D}}}} = \frac{\SI{0.923}{u}}{\SI{1.714}{u}} = 0.538
+\end{equation}
+Mit der Formel \eqref{dummeRechnung} kann das Verhältnis der der C-H zur C-D Schwinungung berechnet werden, wofür sich in 
+diesem Bespiel ein Verhältnis von 0.539. 
+
+\listoffigures
+\listoftables
+\printbibliography
+\end{document}
