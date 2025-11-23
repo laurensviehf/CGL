@@ -74,8 +74,7 @@ per-mode=symbol-or-fraction}
 \thispagestyle{empty}
 \begin{titlepage}
     \title{Abgabe Blatt 5}
-    \author{Laurens Viehoff}
-    \author{Felix Roth}
+    \author{Laurens Viehoff, Felix Roth}
     \date{\today}
 \maketitle
 \end{titlepage}
@@ -87,6 +86,11 @@ per-mode=symbol-or-fraction}
 
 \renewcommand{\thepage}{\arabic{page}}
 \setcounter{page}{1}
+
+\section{Gleitumbegung Erklärung}
+
+    LaTeX behandelt Elemente wie Bilder und Tabellen als Gleitobjekte, die automatisch an optisch passenden Stellen platziert werden, statt starr im Textfluss zu verbleiben. 
+    Nutzer können diese Positionierung jedoch gezielt durch Parameter wie h (hier), t (top), b (bottom) oder sowie durch Anpassung interner Einstellungen steuern, um unerwünschte Verschiebungen zu vermeiden.
 
 \section{Evaluation}
 
@@ -121,7 +125,7 @@ Additionally, deviations in the wavenumbers are seen between the simulated and e
 several simulated peaks that possess similar wavenumbers and are superimposed in the experimental data due to line 
 broadening.
 \\
-The recorded spectrum for chloroform is depicted in figure \eqref{fig:Raman_Chloroform}.
+The recorded spectrum for chloroform is depicted in figure \ref{fig:Raman_Chloroform}.
 \begin{figure}[H]
 	\centering
     \includegraphics[width=0.9\linewidth]{ramanChloroform.png}
@@ -137,6 +141,7 @@ and one at around \SI{3000}{cm^{-1}}. The one at \SI{2500}{cm^{-1}} must be caus
 Mit der Formel \eqref{dummeRechnung} kann das Verhältnis der der C-H zur C-D Schwinungung berechnet werden, wofür sich in 
 diesem Bespiel ein Verhältnis von 0.539. 
 
+\newpage
 \listoffigures
 \listoftables
 \printbibliography

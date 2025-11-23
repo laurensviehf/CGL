@@ -1,0 +1,7 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Gleitumbegung Erklärung}{1}{section.1}%
+\contentsline {section}{\numberline {2}Evaluation}{1}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Raman}{1}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Comparison of experimental and calculated spectra}{1}{subsubsection.2.1.1}%
+\contentsline {section}{\numberline {3}References}{3}{section.3}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
