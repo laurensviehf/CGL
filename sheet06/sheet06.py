@@ -1,6 +1,3 @@
-number = 10
-
-
 def is_even(number):
     """Check, if a given number is even.
     Parameters
@@ -19,9 +16,8 @@ def is_even(number):
     natürliche Zahl."
     return number % 2 == 0
     
-assert not is_even(9)   # 9 % 2 = 1. 1 == 0 ist False. -> assert not False ist True. OK.
-assert is_even(10)      # 10 % 2 = 0. 0 == 0 ist True. -> assert True ist True. OK.
+assert not is_even(9)
+assert is_even(10)
 
-# Weitere Tests
 print(f"is_even(9): {is_even(9)}")
 print(f"is_even(10): {is_even(10)}")
