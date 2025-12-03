@@ -33,7 +33,26 @@
 %\usepackage{hyperref}
 \usepackage{pgfplots}
 \usepackage{textgreek}
-\usepackage{minted}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.1, 0.1, 0.1} % Dunkler Hintergrund
+\definecolor{codecomment}{rgb}{0.4, 0.6, 0.4} % Grüner für Kommentare
+\definecolor{codekeyword}{rgb}{0.7, 0.5, 1.0} % Lila für Schlüsselwörter
+\definecolor{codestring}{rgb}{0.9, 0.6, 0.4} % Orange für Strings
+\definecolor{codetext}{rgb}{0.9, 0.9, 0.9} % Heller Text
+
+\lstset{
+  language=Python,
+  backgroundcolor=\color{codegray},
+  basicstyle=\small\ttfamily\color{codetext},
+  keywordstyle=\color{codekeyword}\bfseries,
+  commentstyle=\color{codecomment}\itshape,
+  stringstyle=\color{codestring},
+  frame=single,
+  framesep=2mm,
+  breaklines=true,
+  showstringspaces=false
+}
 
 \newcommand{\tildenu}{{\fontencoding{LGR}\selectfont\accperispomeni\textnu}}
 \captionsetup{format=plain}
@@ -118,25 +137,126 @@ Hier dann noch der Nachweis der eigenen Erstellung einer Quelle vom Buch \cite{d
 
 
 \section{Aufgabe 2}
-\begin{minted}[]{python}
-def is_even(number):
-"""Check, if a given number is even.
-...
-"""
-    assert isinstance(number, int) and number >= 1, 
-	"Die gegebene Zahl ist keine positive, natürliche Zahl."
-    return number % 2 == 0
+\begin{lstlisting}
+import random
+import math
+import matplotlib.pyplot as plt
 
-assert not is_even(9)
-assert is_even(10)
+def generate_random_point_in_square(length):
+    """
+    Generate a random point in a square of a given side length centered around the origin with the sides aligned with x- and y-axis.
+    """
+    return tuple([length*random.uniform(-0.5, 0.5), length*random.uniform(-0.5, 0.5)])
 
-print(f"is_even(9): {is_even(9)}")
-print(f"is_even(10): {is_even(10)}")
-\end{minted}
+def distance(p1, p2):
+    """
+    Measures the Euclidean distance between the points p1 and p2 in 2D.
+    """
+
+    return math.sqrt((p2[0]-p1[0])**2+(p2[1]-p1[1])**2)
 
 
+def point_in_circle(p, center=[0,0], radius=None):
+    """
+    Checks if the provided point p lies in a circle of a given radius around the provided center.
+    """
+    length = distance(center, p)
+
+    if length <= radius:
+
+        print("liegt im Bereich")
+        return True
+    else:
+        print("leigt nicht im Bereich")
+        return False
+i= 1
+full_list_of_points = []
+
+while i < 1000:
+
+    full_list_of_points.append(generate_random_point_in_square(2.0))
+    i = i+1
+
+filtered_list_of_points = []
+
+while i <= len(full_list_of_points):
+
+    if point_in_circle(full_list_of_points[i]) == True:
+        filtered_list_of_points.append(full_list_of_points[i])
+        i = i+1
+    else:
+        i =i+1
+
+print(len(filtered_list_of_points)/(len(full_list_of_points)-len(filtered_list_of_points)))
+# TODO: Generate separate lists of the x- and y-values of full_list_of_points and filtered_list_of_points
+x_values_full = 
+y_values_full = 
+
+x_values_filtered =
+y_values_filtered =
+
+plt.scatter(x_values_full, y_values_full)
+plt.scatter(x_values_filtered, y_values_filtered)
+plt.show()
+\end{lstlisting}
+
+\section{Aufgabe 3}
+\begin{lstlisting}
+    import matplotlib.pyplot as plt
+
+dateiname = "sheet07\messdaten.txt"
+x_werte = []
+y_werte = []
+
+# 1. Datei öffnen und Schleife über Zeilen
+with open(dateiname, 'r') as datei:
+    print(f"Verarbeite Daten aus '{dateiname}'...")
+    
+    for zeilennummer, zeile in enumerate(datei, 1):
+        
+        # 2. .strip() verwenden
+        bereinigte_zeile = zeile.strip()
+        
+        # 3. Filtern von leeren Zeilen und Kommentaren
+        if not bereinigte_zeile or bereinigte_zeile.startswith('#'):
+            # Ignoriere auch Zeilen, die mit '#' (Kommentar) beginnen
+            continue
+        
+        # 4. Sonst Zeile ausgeben und Werte extrahieren
+        print(f"Verarbeite: '{bereinigte_zeile}'")
+        
+        #Teile die bereinigte_zeile in Einzelteile auf
+        teile = bereinigte_zeile.split()
+
+        print(teile)
+        
+        if len(teile) == 2:
+            # Wandel die Teile in Gleitkommazahlen um
+            x = float(teile[0])
+            y = float(teile[1])
+            
+            # Speicher die Werte in den Listen x_werte und y_werte
+        x_werte.append(x)
+        y_werte.append(y)
 
 
+# 5. Am Ende alle Tupel x-y plotten
+if x_werte:
+    print(f"Erfolgreich {len(x_werte)} Datenpunkte gesammelt. Erstelle Plot.")
+    
+    plt.figure()
+    # Verwende Sie plt.scatter() um x_werte gegen y_werte zu plotten
+    plt.scatter(x_werte, y_werte, label = "yeet")
+    
+    plt.title('Messdaten aus Datei')
+    plt.xlabel('X-Koordinate')
+    plt.ylabel('Y-Koordinate')
+    plt.grid(True)
+    plt.savefig('messdaten_plot.pdf')
+    plt.show()
+else:
+print("keine gültigen Daten zum Plotten gefunden.")
+\end{lstlisting}
 \printbibliography
 
 \end{document}
