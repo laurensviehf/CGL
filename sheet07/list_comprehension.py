@@ -13,6 +13,9 @@ def distance(p1, p2):
     """
     # TODO: implement this function
 
+    return tuple(p2[0]-p1[0], p2[1]-p1[1])
+
+
 def point_in_circle(p, center=None, radius=None):
     """
     Checks if the provided point p lies in a circle of a given radius around the provided center.
