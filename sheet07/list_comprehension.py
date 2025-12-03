@@ -20,7 +20,7 @@ def point_in_circle(p, center=None, radius=None):
     """
     Checks if the provided point p lies in a circle of a given radius around the provided center.
     """
-    # TODO: implement this function
+    
 
 
 # TODO: generate a list of 10000 random points in a square of side length 2.0 using generate_random_point_in_square and list comprehension

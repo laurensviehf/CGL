@@ -33,6 +33,7 @@
 %\usepackage{hyperref}
 \usepackage{pgfplots}
 \usepackage{textgreek}
+\usepackage{minted}
 
 \newcommand{\tildenu}{{\fontencoding{LGR}\selectfont\accperispomeni\textnu}}
 \captionsetup{format=plain}
@@ -100,7 +101,40 @@
 \newpage
 
 \section{Aufgabe 1}
-    
+Hier der Nachweis für die Nature einbindung von Quelle \cite{biamonte_quantum_2017}.
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=0.9\linewidth]{Zotero_Nachweis_quantum.png}
+    \caption{Hier des Quantum machine learning paper.}
+    \label{fig:Quantummachinelearning}
+\end{figure}
+Hier dann noch der Nachweis der eigenen Erstellung einer Quelle vom Buch \cite{demtroder_experimentalphysik_2003}.
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=0.9\linewidth]{Zotero_Nachweis_Demtröder.png}
+    \caption{Hier das Demtröder Buch.}
+    \label{fig:Raman_Chloroform}
+\end{figure}
+
+
+\section{Aufgabe 2}
+\begin{minted}[]{python}
+def is_even(number):
+"""Check, if a given number is even.
+...
+"""
+    assert isinstance(number, int) and number >= 1, 
+	"Die gegebene Zahl ist keine positive, natürliche Zahl."
+    return number % 2 == 0
+
+assert not is_even(9)
+assert is_even(10)
+
+print(f"is_even(9): {is_even(9)}")
+print(f"is_even(10): {is_even(10)}")
+\end{minted}
+
+
 
 
 \printbibliography
