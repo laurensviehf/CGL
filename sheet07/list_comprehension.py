@@ -49,11 +49,11 @@ while i <= len(full_list_of_points):
 
 print(len(filtered_list_of_points)/(len(full_list_of_points)-len(filtered_list_of_points)))
 # TODO: Generate separate lists of the x- and y-values of full_list_of_points and filtered_list_of_points
-x_values_full = 
-y_values_full = 
+x_values_full = 0
+y_values_full = 0
 
-x_values_filtered =
-y_values_filtered =
+x_values_filtered = 0
+y_values_filtered = 0
 
 plt.scatter(x_values_full, y_values_full)
 plt.scatter(x_values_filtered, y_values_filtered)
